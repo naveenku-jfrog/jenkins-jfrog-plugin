@@ -57,13 +57,6 @@ public class JFrogCliConfigEncryption implements Action {
         }
     }
 
-    public String getKeyOrFilePath() {
-        if (this.keyOrPath == null || this.keyOrPath.isEmpty()) {
-            return null;
-        }
-        return this.keyOrPath;
-    }
-
     public boolean shouldEncrypt() {
         return shouldEncrypt;
     }
