@@ -9,6 +9,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsRule;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static io.jenkins.plugins.jfrog.CliEnvConfigurator.*;
 import static org.junit.Assert.*;
 
@@ -46,7 +52,7 @@ public class CliEnvConfiguratorTest {
         assertEquals(32, configEncryption.getKey().length());
 
         invokeConfigureCliEnv("a/b/c", configEncryption);
-        assertEnv(envVars, JFROG_CLI_ENCRYPTION_KEY, configEncryption.getKey());
+        assertEnv(envVars, JFROG_CLI_ENCRYPTION_KEY, configEncryption.getKeyOrFilePath());
     }
 
     @Test
